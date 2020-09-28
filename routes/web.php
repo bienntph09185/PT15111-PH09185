@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/students', function () {
+    // Su dung query builder
+    // Lay ra mang students
+    $students =  DB::table('students')->get();
+
+    return view('students.detail', [
+        'students' => $students
+    ]);
 });
