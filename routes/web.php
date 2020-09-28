@@ -24,7 +24,7 @@ Route::get('/students', function () {
     // Lay ra mang students
     $students =  DB::table('students')->get();
 
-    return view('students.detail', [
+    return view('students.student-list', [
         'students' => $students
     ]);
 });
