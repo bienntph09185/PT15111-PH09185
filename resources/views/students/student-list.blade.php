@@ -13,7 +13,7 @@
         <h1 class="header">Header List</h1>
     </header> -->
 <!-- <div class="container"> -->
-@extends('student-layout.master')
+@extends('admin-layout.master')
 @section('title','Danh Sach')
 @section('header','Header List')
 
