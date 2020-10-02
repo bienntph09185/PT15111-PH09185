@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,4 +29,19 @@ Route::get('/students', function () {
     return view('students.student-list', [
         'students' => $students
     ]);
-});
+})->name('student-list');
+// Chuc nang Login + route POST
+Route::get('/login', function () {
+    return view('login');
+})->name('get-login');
+
+
+Route::post('/post-login', function (Request $request) {
+    $username = $request->username;
+    $student = DB::table('students')
+        ->where('name', 'like', "%$username%")->first();
+    if ($student) {
+        return redirect()->route('student-list');
+    }
+    return redirect()->route('get-login');
+})->name('post-login');

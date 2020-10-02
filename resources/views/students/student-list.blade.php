@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,39 +9,53 @@
 </head>
 
 <body>
-    <div class="container">
-        <table class="table">
-            <thead>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Address</th>
-                <th>Active</th>
-            </thead>
+    <header>
+        <h1 class="header">Header List</h1>
+    </header> -->
+<!-- <div class="container"> -->
+@extends('admin-layout.master')
+@section('title','Danh Sach')
+@section('header','Header List')
 
-            <tbody>
-                @foreach($students as $student)
-                <tr>
-                    <th>{{$student->id}}</th>
-                    <td>{{$student->name}}</td>
-                    <td>{{$student->age}}</td>
-                    <td>
-                        @if($student->gender == 0)
-                        Bê đuê
-                        @elseif($student->gender == 1)
-                        Đực
-                        @else
-                        Đũy
-                        @endif
-                    </td>
-                    <td>{{$student->address}}</td>
-                    <td>{{$student->is_active == 0 ? 'No' : 'Yes'}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+<!-- //Thay đổi nội dung phức tạp -->
+@section('content')
+<table class="table table-striped">
+    <thead>
+        <th class="text-wrap">ID</th>
+        <th class="text-wrap">Tên</th>
+        <th class="text-wrap">Age</th>
+        <th class="text-wrap">Gender</th>
+        <th class="text-wrap">Address</th>
+        <th class="text-wrap">Active</th>
+    </thead>
+
+    <tbody>
+        @foreach($students as $student)
+        <tr>
+            <th>{{$student->id}}</th>
+            <td>{{$student->name}}</td>
+            <td>{{$student->age}}</td>
+            <td>
+                @if($student->gender == 0)
+                Chưa Xác Định
+                @elseif($student->gender == 1)
+                Nam
+                @else
+                Nữ
+                @endif
+            </td>
+            <td>{{$student->address}}</td>
+            <td>{{$student->is_active == 0 ? 'No' : 'Yes'}}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+@endsection
+@section('footer','FOOTER-LIST')
+<!-- </div> -->
+<!-- <footer>
+        <h1>Footerr List</h1>
+    </footer>
 </body>
 
-</html>
+</html> -->
