@@ -27,7 +27,7 @@ class StudentController extends Controller
 
     public function create()
     {
-        dd('Student-Create');
+        // dd('Student-Create');
     }
 
     /**
