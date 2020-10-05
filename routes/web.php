@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\StudentController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,16 +24,22 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::view('/student',);
+// Tạo route resource students Controller
+Route::resource('students', StudentController::class);
+// ->only(['index']); chỉ dùng hàm nào đó
+// ->except(['edit']); bỏ qua hàm nào đó
+// Tạo route cho SubjectControler k dùng resouce
+Route::get('subject', [SubjectController::class, 'index'])->name('subjects.index');
+// Route::get('/students', function () {
+//     // Su dung query builder
+//     // Lay ra mang students
+//     $students =  DB::table('students')->get();
 
-Route::get('/students', function () {
-    // Su dung query builder
-    // Lay ra mang students
-    $students =  DB::table('students')->get();
-
-    return view('students.student-list', [
-        'students' => $students
-    ]);
-})->name('student-list');
+//     return view('students.student-list', [
+//         'students' => $students
+//     ]);
+// })->name('student-list');
 // Chuc nang Login + route POST
 Route::get('/login', function () {
     return view('login');
