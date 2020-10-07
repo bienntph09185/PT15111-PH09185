@@ -30,6 +30,9 @@
         <th class="text-wrap">Phone</th>
         <th class="text-wrap">Active</th>
         <th class="text-wrap">Action</th>
+        <th>
+            <a href="{{route('students.create')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+        </th>
     </thead>
 
     <tbody>
@@ -55,15 +58,23 @@
             <td class="btn btn-danger">No</td>
             @endif
             <td>
-                <form action="">
-                    <a href="{{route('students.edit',$student->id)}}" class="btn btn-sm btn-info">
-                        <i class="fa fa-pencil-alt"></i>
+                <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+                    @csrf
+                    <input type='hidden' name='_method' value='DELETE'></input>
+                    <button type='submit'>Delete</button>
+                </form>
+                <a href="{{ route('students.edit', $student->id) }}">
+                    <button>Edit</button>
+                </a>
+                <!-- <form action="{{route('students.edit',$student->id)}}">
+                    <a href="" class="btn btn-sm btn-info">
+                        <button>Edit</button>
                     </a>
                     <form action="{{ route('students.destroy',$student->id)}}" method="POST">@csrf
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn-remove btn btn-sm btn-danger">Delete</button>
-                    </form>
-                    <!-- <a href="{{ route('students.destroy',$student->id)}}" class="btn-remove btn btn-sm btn-danger">
+                    </form> -->
+                <!-- <a href="{{ route('students.destroy',$student->id)}}" class="btn-remove btn btn-sm btn-danger">
                     <i class="fa fa-trash"></i>
                 </a> -->
             </td>
