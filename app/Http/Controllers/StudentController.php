@@ -73,7 +73,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+
+        return view('students.edit', ['student' => $student]);
     }
 
     /**
@@ -85,7 +86,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $student->name = $request->name;
+
+        $student->save();
+
+        //Cách 2 $student->update(['name'=>$request->name])
+        //$student->
+        return redirect()->route('students.index');
     }
 
     /**
@@ -96,6 +103,12 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        //Kiểm tra tồn tại hay k rồi mới xóa
+        if ($student) {
+            $student->delete(); // trả về kết quả true or false
+        }
+        //Cách 2 Student::destroy($student->id) //trả về số lượng bản ghi đã xóa
+        //Redirect về danh sách (có thực hiện truy vấn lấy danh sách mới)
+        return redirect()->route('students.index');
     }
 }

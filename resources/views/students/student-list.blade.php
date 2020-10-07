@@ -27,7 +27,9 @@
         <th class="text-wrap">Age</th>
         <th class="text-wrap">Gender</th>
         <th class="text-wrap">Address</th>
+        <th class="text-wrap">Phone</th>
         <th class="text-wrap">Active</th>
+        <th class="text-wrap">Action</th>
     </thead>
 
     <tbody>
@@ -46,11 +48,25 @@
                 @endif
             </td>
             <td>{{$student->address}}</td>
+            <td>{{$student->phone}}</td>
             @if($student->is_active == 0)
             <td class="btn btn-success">Yes</td>
             @else
             <td class="btn btn-danger">No</td>
             @endif
+            <td>
+                <form action="">
+                    <a href="{{route('students.edit',$student->id)}}" class="btn btn-sm btn-info">
+                        <i class="fa fa-pencil-alt"></i>
+                    </a>
+                    <form action="{{ route('students.destroy',$student->id)}}" method="POST">@csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn-remove btn btn-sm btn-danger">Delete</button>
+                    </form>
+                    <!-- <a href="{{ route('students.destroy',$student->id)}}" class="btn-remove btn btn-sm btn-danger">
+                    <i class="fa fa-trash"></i>
+                </a> -->
+            </td>
         </tr>
         @endforeach
     </tbody>
