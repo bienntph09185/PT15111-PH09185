@@ -33,6 +33,7 @@
     </thead>
 
     <tbody>
+
         @foreach($students as $student)
         <tr>
             <th>{{$student->id}}</th>
