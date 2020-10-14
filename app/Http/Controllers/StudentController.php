@@ -27,7 +27,7 @@ class StudentController extends Controller
 
     public function create()
     {
-        dd('Student-Create');
+        return view('students.create');
     }
 
     /**
@@ -38,7 +38,16 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = new Student;
+
+        $student->name = $request->name;
+        $student->age = $request->age;
+        $student->address = $request->address;
+        $student->phone = $request->phone;
+        $student->gender = $request->gender;
+        $student->is_active = $request->is_active;
+        $student->save();
+        return redirect()->route('students.index');
     }
 
     /**
@@ -86,7 +95,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
+        // dd(123);
         $student->name = $request->name;
+        $student->phone = $request->phone;
+        $student->address = $request->address;
+        $student->gender = $request->gender;
+        $student->age = $request->age;
+        $student->is_active = $request->is_active;
 
         $student->save();
 
