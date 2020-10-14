@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\StudentController;
 
+use App\Http\Controllers\CommentController;
 
+use App\Http\Controllers\CategoriesController;
+
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +31,12 @@ Route::get('/', function () {
 // Route::view('/student',);
 // Tạo route resource students Controller
 Route::resource('students', StudentController::class);
+Route::resource('posts', PostController::class);
+Route::resource('comments', CommentController::class);
+Route::resource('categories', CategoriesController::class);
+
+
+
 // ->only(['index']); chỉ dùng hàm nào đó
 // ->except(['edit']); bỏ qua hàm nào đó
 // Tạo route cho SubjectControler k dùng resouce
@@ -55,3 +65,6 @@ Route::post('/post-login', function (Request $request) {
     }
     return redirect()->route('get-login');
 })->name('post-login');
+Route::get('post', [PostController::class, 'index']);
+Route::get('comment', [CommentController::class, 'index']);
+Route::get('categories', [CategoriesController::class, 'index']);

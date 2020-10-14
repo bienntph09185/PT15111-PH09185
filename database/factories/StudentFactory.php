@@ -26,10 +26,10 @@ class StudentFactory extends Factory
             //
             'name' => $this->faker->name,
             'phone' => $this->faker->phoneNumber,
-            'age' => $this->faker->numberBetween(18,25),
-            'gender'=>$this->faker->numberBetween(0,2),
-            'address'=>$this->faker->address,
-            'is_active'=>$this->faker->numberBetween(0,1)
+            'age' => $this->faker->numberBetween(18, 25),
+            'gender' => $this->faker->numberBetween(0, 2),
+            'address' => $this->faker->address,
+            'is_active' => $this->faker->numberBetween(0, 1),
         ];
     }
 }

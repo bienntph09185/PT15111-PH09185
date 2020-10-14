@@ -11,11 +11,16 @@ class Student extends Model
     protected $table = 'students';
 
     protected $fillable = [
-        'name' ,
+        'name',
         'phone',
         'age',
         'gender',
         'address',
         'is_active'
     ];
+    // function posst the hien 1 sinh vien co the co nhieu bai post
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'student_id', 'id');
+    }
 }
