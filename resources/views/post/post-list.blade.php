@@ -14,7 +14,7 @@
         <th>image_url</th>
         <th>status</th>
         <th>
-            <a href="{{ route('students.create')}}"><button class="btn btn-success">Thêm mới</button></a>
+            <a href="{{ route('posts.create')}}"><button class="btn btn-success">Thêm mới</button></a>
 
         </th>
     </thead>
@@ -26,7 +26,7 @@
             <td>{{$post->student->name}}</td>
             <td>{{$post -> desc}}</td>
             <td>{{$post -> content}}</td>
-            <td>{{$post -> img_url}}</td>
+            <td><img src="{{ substr($post->img_url, 0, 4) == 'http' ? $post->img_url : asset($post->img_url) }}" height="50" /> </td>
             @if($post->status == 0)
             <td class="btn btn-success">Yes</td>
             @else

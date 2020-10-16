@@ -1,16 +1,22 @@
-extends('admin-layout')
+@extends('admin-layout.master')
 
 @section('title' , 'Create Post')
 
 @section('content')
-
-<form class="form-group" action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
-
-    <div class="form-control"><input type="text" name="desc"></div>
-    <div class="form-control"><input type="text" name="content"></div>
-    <div class="form-control" put type="file" name="img"></div>
+@if($errors->any())
+<ul>
+    @foreach($errors->all() as $error)
+    <li>{{$error}}</li>
+    @endforeach
+</ul>
+@endif
+<form class="form-group" action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="form-control"><input type="text" name="desc" placeholder="Giới thiệu"></div>
+    <div class="form-control"><input type="text" name="content" placeholder="Content"></div>
+    <div class="form-control"><input type="file" name="img"></div>
     <div class="form-control"><select name="student_id" id="">
-            @foreach($studnets as $student)
+            @foreach($students as $student)
             <option value="{{$student->id}}">{{$student->name}}</option>
             @endforeach
         </select>
