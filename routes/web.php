@@ -35,21 +35,6 @@ Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('categories', CategoriesController::class);
 
-
-
-// ->only(['index']); chỉ dùng hàm nào đó
-// ->except(['edit']); bỏ qua hàm nào đó
-// Tạo route cho SubjectControler k dùng resouce
-Route::get('subject', [SubjectController::class, 'index'])->name('subjects.index');
-// Route::get('/students', function () {
-//     // Su dung query builder
-//     // Lay ra mang students
-//     $students =  DB::table('students')->get();
-
-//     return view('students.student-list', [
-//         'students' => $students
-//     ]);
-// })->name('student-list');
 // Chuc nang Login + route POST
 Route::get('/login', function () {
     return view('login');
@@ -65,6 +50,3 @@ Route::post('/post-login', function (Request $request) {
     }
     return redirect()->route('get-login');
 })->name('post-login');
-Route::get('post', [PostController::class, 'index']);
-Route::get('comment', [CommentController::class, 'index']);
-Route::get('categories', [CategoriesController::class, 'index']);
